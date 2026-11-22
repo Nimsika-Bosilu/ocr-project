@@ -1,0 +1,16 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: api-gateway
+  labels:
+    {{- include "ocr-project.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: api-gateway
+  endpoints:
+    - port: http
+      path: {{ .Values.serviceMonitor.gateway.path }}
+      interval: {{ .Values.serviceMonitor.gateway.interval }}
+{{- end }}

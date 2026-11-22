@@ -42,6 +42,15 @@ spec:
           envFrom:
             - configMapRef:
                 name: api-gateway-config
+          
+          livenessProbe:
+            tcpSocket:
+              port: http
+              
+          readinessProbe:
+            tcpSocket:
+              port: http
+
 
           resources:
             {{- toYaml .Values.gateway.resources | nindent 12 }}

@@ -12,7 +12,7 @@ serviceAccount:
 model:
   image:
     repository: docker.io/nimsikapickme/ocr-project
-    tag: ocr-model-v1
+    tag: ocr-model-v2
 
   config:
     MODEL_NAME: ocr-model
@@ -35,7 +35,7 @@ model:
 gateway:
   image:
     repository: docker.io/nimsikapickme/ocr-project
-    tag: api-gateway-v3
+    tag: api-gateway-v4
 
   config:
     KSERVE_URL: http://ocr-model.ocr-system.svc.cluster.local:8080/v2/models/ocr-model/infer

@@ -14,7 +14,8 @@ RUN poetry config virtualenvs.create false && \
     poetry install --only main --no-root --no-interaction
 
 COPY model.py .
-
+RUN useradd --uid 10001 appuser
+USER 10001
 EXPOSE 8080
 
 CMD ["python", "model.py"]

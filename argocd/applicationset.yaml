@@ -7,7 +7,7 @@ spec:
   goTemplate: true
   generators:
     - git:
-        repoURL: https://github.com/<github-user>/ocr-project.git
+        repoURL: https://github.com/Nimsika-Bosilu/ocr-project.git
         revision: main
         directories:
           - path: charts/*

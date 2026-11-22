@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ocr-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: ocr-inference
+  source:
+    repoURL: https://github.com/Nimsika-Bosilu/ocr-project.git
+    targetRevision: main
+    path: charts/ocr-project
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ocr-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

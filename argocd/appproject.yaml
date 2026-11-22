@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ocr-inference
+  namespace: argocd
+spec:
+  description: OCR inference system
+  sourceRepos:
+    - https://github.com/Nimsika-Bosilu/ocr-project.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: ocr-system

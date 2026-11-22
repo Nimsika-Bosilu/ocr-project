@@ -3,8 +3,10 @@ from fastapi.responses import JSONResponse
 import requests
 import base64
 import json
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 KSERVE_URL = "http://ocr-model.ocr-system.svc.cluster.local:8080/v2/models/ocr-model/infer" # Your KServe model server URL
 

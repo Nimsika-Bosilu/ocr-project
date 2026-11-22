@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: api-gateway-config
+  labels:
+    {{- include "ocr-project.labels" . | nindent 4 }}
+
+data:
+  KSERVE_URL: {{ .Values.gateway.config.KSERVE_URL | quote }}

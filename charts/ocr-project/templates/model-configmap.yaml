@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocr-model-config
+  labels:
+    {{- include "ocr-project.labels" . | nindent 4 }}
+data:
+  MODEL_NAME: {{ .Values.model.config.MODEL_NAME | quote }}

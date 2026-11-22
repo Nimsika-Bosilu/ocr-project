@@ -1,0 +1,12 @@
+services:
+  api-gateway:
+    build: ./services/api-gateway
+    ports:
+      - "8001:8001"
+    depends_on:
+      - ocr-model-container
+
+  ocr-model-container:
+    build: ./services/ocr-model
+    ports:
+      - "8080:8080"

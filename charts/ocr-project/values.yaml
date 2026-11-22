@@ -1,0 +1,67 @@
+replicaCount:
+  model: 1
+  gateway: 1
+
+imagePullSecrets:
+  - name: dockerhub-creds
+
+serviceAccount:
+  create: true
+  name: ""
+
+model:
+  image:
+    repository: docker.io/nimsikapickme/ocr-project
+    tag: ocr-model-v1
+
+  config:
+    MODEL_NAME: ocr-model
+
+  service:
+    type: ClusterIP
+    port: 8080
+
+  probes:
+    livenessPath: /v2/health/live
+    readinessPath: /v2/health/ready
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 1Gi
+
+gateway:
+  image:
+    repository: docker.io/nimsikapickme/ocr-project
+    tag: api-gateway-v3
+
+  config:
+    KSERVE_URL: http://ocr-model.ocr-system.svc.cluster.local:8080/v2/models/ocr-model/infer
+
+  service:
+    type: NodePort
+    port: 8001
+
+  probes:
+    livenessPath: /healthz
+    readinessPath: /healthz
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 96Mi
+    limits:
+      memory: 256Mi
+
+serviceMonitor:
+  enabled: true
+
+  model:
+    path: /metrics
+    interval: 15s
+
+  gateway:
+    path: /metrics
+    interval: 15s

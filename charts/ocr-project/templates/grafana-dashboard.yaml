@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocr-grafana-dashboard
+  labels:
+    grafana_dashboard: "1"
+    {{- include "ocr-project.labels" . | nindent 4 }}
+data:
+  ocr-dashboard.json: |-
+{{ .Files.Get "dashboards/ocr-dashboard.json" | indent 4 }}

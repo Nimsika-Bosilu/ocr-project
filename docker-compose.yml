@@ -1,6 +1,7 @@
 services:
   api-gateway:
     build: ./services/api-gateway
+    image: nimsikapickme/ocr-project:api-gateway-v4
     ports:
       - "8001:8001"
     depends_on:
@@ -8,5 +9,6 @@ services:
 
   ocr-model-container:
     build: ./services/ocr-model
+    image: nimsikapickme/ocr-project:ocr-model-v2
     ports:
       - "8080:8080"

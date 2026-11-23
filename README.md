@@ -47,7 +47,10 @@ flowchart LR
 
 ## prometheus endpoints for pods
 
-![Grafana](images/prometheus.png)
+![prometheus](images/prometheus.png)
+
+## Api endpoint testing after deploy in minikube local cluser with argocd gitpos 
+![api-endpoint-test](images/api-endpoint-testing.png)
 
 **How a request works**
 

@@ -37,6 +37,18 @@ flowchart LR
   ns -->|pulls images| hub
 ```
 
+## ArgoCD Application Dashboard
+
+![Dashboard](images/dashboard.png)
+
+## Grafana Monitoring
+
+![Grafana](images/grafana.png)
+
+## prometheus endpoints for pods
+
+![Grafana](images/prometheus.png)
+
 **How a request works**
 
 1. The user sends an image to `POST /gateway/ocr` (form-data key: `image_file`).
